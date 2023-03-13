@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilter } from 'redux/selectors';
 import { setFilter } from 'redux/filter/filter-slice';
-import css from 'components/Filter/filter.module.css';
+import { TextField } from '@mui/material';
 
 const Filter = () => {
   const filter = useSelector(getFilter);
@@ -12,11 +12,13 @@ const Filter = () => {
   };
 
   return (
-    <input
-      className={css.input}
+    <TextField
       type="text"
       value={filter}
       onChange={handleFilterChange}
+      variant="standard"
+      label="Filter"
+      sx={{width: 300, mb: 3}}
     />
   );
 };

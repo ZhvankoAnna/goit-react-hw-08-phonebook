@@ -1,11 +1,11 @@
+import { List } from '@mui/material';
 import ListElement from 'components/ListElement/ListElement';
-import css from 'components/ContactList/contact-list.module.css';
 
 const ContactList = () => {
   return (
-    <ul className={css.list}>
+    <List>
       <ListElement />
-    </ul>
+    </List>
   );
 };
 

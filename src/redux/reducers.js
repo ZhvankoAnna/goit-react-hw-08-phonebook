@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
+import authReducer from './auth/auth-slice'
 import contactsReducer from './contacts/contacts-slice';
 import filterReducer from './filter/filter-slice';
 
 const rootReducer = combineReducers({
+  auth: authReducer,
   contacts: contactsReducer,
   filter: filterReducer,
 });
