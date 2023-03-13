@@ -1,0 +1,16 @@
+.link {
+  color: #43a047;
+  font-size: 24;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  &:global(.active) {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+}

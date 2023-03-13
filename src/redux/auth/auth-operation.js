@@ -9,7 +9,7 @@ export const signup = createAsyncThunk(
       const result = await api.signup(data);
       return result;
     } catch ({ response }) {
-      alertFunc("Somethink went wrong, try again")
+      alertFunc('Somethink went wrong, try again');
       return rejectWithValue(response.statusText);
     }
   }
@@ -22,7 +22,7 @@ export const login = createAsyncThunk(
       const result = await api.login(data);
       return result;
     } catch ({ response }) {
-      alertFunc("Somethink went wrong, try again")
+      alertFunc('Somethink went wrong, try again');
       return rejectWithValue(response.statusText);
     }
   }
@@ -34,7 +34,7 @@ export const logout = createAsyncThunk(
     try {
       await api.logout();
     } catch ({ response }) {
-      alertFunc("Somethink went wrong, try again")
+      alertFunc('Somethink went wrong, try again');
       return rejectWithValue(response.statusText);
     }
   }
@@ -48,7 +48,7 @@ export const refresh = createAsyncThunk(
       const result = await api.current(auth.token);
       return result;
     } catch ({ response }) {
-      alertFunc("Somethink went wrong, try again")
+      alertFunc('Somethink went wrong, try again');
       return rejectWithValue(response);
     }
   },

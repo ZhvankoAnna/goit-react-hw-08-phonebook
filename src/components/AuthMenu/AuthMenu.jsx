@@ -1,16 +1,17 @@
 import { NavLink } from 'react-router-dom';
-// import { Link } from "@mui/material";
+import styles from './auth-menu.module.scss';
 
 const AuthMenu = () => {
-    return (
-      < >
-      {/* <Link href="/register" underline="none" sx={{color: "common.white", fontWeight: 600,}}>Registration</Link>
-      <Link href="//login" underline="none" sx={{color: "common.white", fontWeight: 600,}}>LogIn</Link> */}
+  return (
+    <>
+      <NavLink to="/register" className={styles.link}>
+        Registration
+      </NavLink>
+      <NavLink to="/login" className={styles.link}>
+        LogIn
+      </NavLink>
+    </>
+  );
+};
 
-        <NavLink to="/register">Registration</NavLink>
-        <NavLink to="/login">LogIn</NavLink>
-      </>
-    );
-  };
-
-  export default AuthMenu;
+export default AuthMenu;

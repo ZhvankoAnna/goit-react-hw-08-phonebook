@@ -6,6 +6,7 @@ import { Container, Typography } from '@mui/material';
 import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
+import styles from './contacts-page.module.scss';
 
 const ContactsPage = () => {
   const contacts = useSelector(getContacts);
@@ -21,10 +22,7 @@ const ContactsPage = () => {
 
   return (
     <main>
-      <Container
-        maxWidth="lg"
-        sx={{ minHeight: '100vh', py: 4, backgroundColor: '#FFF59D' }}
-      >
+      <Container maxWidth="lg" className={styles.container}>
         <Typography variant="h3" component="h1">
           Phonebook
         </Typography>

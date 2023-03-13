@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/auth-operation';
-import { Container } from '@mui/material';
+import CustomContainer from 'shared/components/Container/Container';
 import LoginForm from 'components/LoginForm/LoginForm';
 
 const LoginPage = () => {
@@ -12,17 +12,9 @@ const LoginPage = () => {
 
   return (
     <main>
-      <Container
-        maxWidth="lg"
-        sx={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          backgroundColor: '#FFF59D',
-        }}
-      >
+      <CustomContainer>
         <LoginForm onFormSubmit={handleSubmit} />
-      </Container>
+      </CustomContainer>
     </main>
   );
 };

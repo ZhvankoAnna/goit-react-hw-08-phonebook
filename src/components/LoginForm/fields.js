@@ -1,7 +1,7 @@
 export const fields = {
   email: {
     key: 1,
-    label: "Email",
+    label: 'Email',
     type: 'email',
     name: 'email',
     required: true,
@@ -9,7 +9,7 @@ export const fields = {
   },
   password: {
     key: 2,
-    label: "Password",
+    label: 'Password',
     type: 'password',
     name: 'password',
     required: true,

@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types';
 import useForm from 'shared/hooks/useForm';
 import CustomButton from 'shared/components/Button/Button';
 import { Box, TextField } from '@mui/material';
 import { fields } from './fields';
+import styles from './login-form.module.scss';
 
 const INITIAL_STATE = {
   email: '',
@@ -16,35 +18,20 @@ const LoginForm = ({ initialState = INITIAL_STATE, onFormSubmit }) => {
 
   const { email, password } = state;
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{
-        width: 360,
-        height: 400,
-        mt: 10,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 3,
-        borderRadius: 1.5,
-        backgroundColor: 'rgba(252, 252, 251, 0.3)',
-      }}
-    >
+    <Box component="form" onSubmit={handleSubmit} className={styles.form}>
       <TextField
         variant="standard"
         value={email}
         onChange={handleChange}
         {...fields.email}
-        sx={{ width: 280 }}
+        className={styles.field}
       />
       <TextField
         variant="standard"
         value={password}
         onChange={handleChange}
         {...fields.password}
-        sx={{ width: 280 }}
+        className={styles.field}
       />
       <CustomButton type="submit">LogIn</CustomButton>
     </Box>
@@ -52,3 +39,11 @@ const LoginForm = ({ initialState = INITIAL_STATE, onFormSubmit }) => {
 };
 
 export default LoginForm;
+
+LoginForm.propTypes = {
+  initialState: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+  }),
+  onFormSubmit: PropTypes.func.isRequired,
+};

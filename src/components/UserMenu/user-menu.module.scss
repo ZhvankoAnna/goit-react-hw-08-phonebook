@@ -1,0 +1,34 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link {
+  color: #43a047;
+  font-size: 24;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  &:global(.active) {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+}
+
+.box {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.text {
+  color: #43a047;
+  font-weight: 700;
+}

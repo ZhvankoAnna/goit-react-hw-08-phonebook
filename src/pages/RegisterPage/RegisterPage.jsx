@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { signup } from 'redux/auth/auth-operation';
-import { Container } from '@mui/material';
+import CustomContainer from 'shared/components/Container/Container';
 import RegisterForm from 'components/RegisterForm/RegisterForm';
 
 const RegisterPage = () => {
@@ -12,17 +12,9 @@ const RegisterPage = () => {
 
   return (
     <main>
-      <Container
-        maxWidth="lg"
-        sx={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          backgroundColor: '#FFF59D',
-        }}
-      >
+      <CustomContainer>
         <RegisterForm onFormSubmit={handleSubmit} />
-      </Container>
+      </CustomContainer>
     </main>
   );
 };

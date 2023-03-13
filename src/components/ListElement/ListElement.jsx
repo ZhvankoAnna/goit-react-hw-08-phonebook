@@ -1,24 +1,21 @@
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts, getFilter } from 'redux/selectors';
-import { deleteContact, editContact } from 'redux/contacts/contacts-operations';
+import { deleteContact } from 'redux/contacts/contacts-operations';
 import {
   Box,
   ListItem,
   ListItemAvatar,
   Avatar,
   ListItemText,
-  Modal
 } from '@mui/material';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import CustomButton from 'shared/components/Button/Button';
-// import BasicModal from 'shared/components/Modal/Modal';
-import ContactForm from 'components/ContactForm/ContactForm';
+import styles from './list-element.module.scss';
 
-const ListElement = () => {
-  const [showModal, setShowModal] = useState(false);
+const ListElement = ({ showModal }) => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
@@ -35,40 +32,22 @@ const ListElement = () => {
 
   const filteredContacts = filterContacts();
 
-  const onEditContact = () => {
-    setShowModal(prevState => {
-      return !prevState;
-    });
-  };
-
   const onDeleteContact = id => {
     dispatch(deleteContact(id));
   };
 
-  const handleSubmit = data => {
-    dispatch(editContact(data));
-  };
-
   const elements = filteredContacts.map(({ id, name, number }) => (
-    <ListItem
-      key={id}
-      sx={{
-        display: 'flex',
-        gap: 2,
-        alignItems: 'center',
-        borderBottom: "1px solid rgba(0,0,0,0.12)"
-      }}
-    >
+    <ListItem key={id} className={styles.item}>
       <ListItemAvatar>
-        <Avatar sx={{ width: 24, height: 24, backgroundColor: 'white' }}>
-          <AccountCircleRoundedIcon color="primary" sx={{ fontSize: 24 }} />
+        <Avatar className={styles.avatar}>
+          <AccountCircleRoundedIcon color="primary" className={styles.icon} />
         </Avatar>
       </ListItemAvatar>
-      <ListItemText primary={name} secondary={number} sx={{display: "block", maxWidth: 240}} />
-      <Box element="div" sx={{ display: 'flex', gap: 1 }}>
+      <ListItemText primary={name} secondary={number} className={styles.text} />
+      <Box element="div" className={styles.box}>
         <CustomButton
           type="button"
-          onBtnClick={onEditContact}
+          onBtnClick={() => showModal({ id, name, number })}
           startIcon={<EditIcon />}
         >
           Edit
@@ -81,16 +60,6 @@ const ListElement = () => {
           Delete
         </CustomButton>
       </Box>
-      {showModal && (
-        // <BasicModal onClose={onEditContact}>
-        <Modal open={showModal} onClose={onEditContact}>
-          <ContactForm
-            initialState={(id, name, number)}
-            onFormSubmit={handleSubmit}
-          />
-          </Modal>
-        // </BasicModal>
-      )}
     </ListItem>
   ));
 
@@ -98,3 +67,7 @@ const ListElement = () => {
 };
 
 export default ListElement;
+
+ListElement.propTypes = {
+  showModal: PropTypes.func.isRequired,
+};

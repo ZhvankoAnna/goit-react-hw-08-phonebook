@@ -6,23 +6,22 @@ import NavMenu from './NavMenu/NavMenu';
 import PageRoutes from './PageRoutes';
 
 const theme = createTheme({
-palette:{
-  primary:{
-    main: "#43A047",
-  }
-},
-typography: {
-fontSize: 14,
-
-}
-})
+  palette: {
+    primary: {
+      main: '#43A047',
+    },
+  },
+  typography: {
+    fontSize: 14,
+  },
+});
 
 const App = () => {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-useEffect(() => {
-  dispatch(refresh())
-}, [dispatch])
+  useEffect(() => {
+    dispatch(refresh());
+  }, [dispatch]);
 
   return (
     <ThemeProvider theme={theme}>

@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types';
 import useForm from 'shared/hooks/useForm';
 import CustomButton from 'shared/components/Button/Button';
 import { Box, TextField } from '@mui/material';
 import { fields } from './fields';
+import styles from './register-form.module.scss';
 
 const INITIAL_STATE = {
   name: '',
@@ -18,42 +20,27 @@ const RegisterForm = ({ initialState = INITIAL_STATE, onFormSubmit }) => {
   const { name, email, password } = state;
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{
-        width: 360,
-        height: 400,
-        mt: 10,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 3,
-        borderRadius: 1.5,
-        backgroundColor: 'rgba(252, 252, 251, 0.3)',
-      }}
-    >
+    <Box component="form" onSubmit={handleSubmit} className={styles.form}>
       <TextField
         variant="standard"
         value={name}
         onChange={handleChange}
         {...fields.name}
-        sx={{ width: 280 }}
+        className={styles.field}
       />
       <TextField
         variant="standard"
         value={email}
         onChange={handleChange}
         {...fields.email}
-        sx={{ width: 280 }}
+        className={styles.field}
       />
       <TextField
         variant="standard"
         value={password}
         onChange={handleChange}
         {...fields.password}
-        sx={{ width: 280 }}
+        className={styles.field}
       />
       <CustomButton type="submit">Register</CustomButton>
     </Box>
@@ -61,3 +48,12 @@ const RegisterForm = ({ initialState = INITIAL_STATE, onFormSubmit }) => {
 };
 
 export default RegisterForm;
+
+RegisterForm.propTypes = {
+  initialState: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+  }),
+  onFormSubmit: PropTypes.func.isRequired,
+};

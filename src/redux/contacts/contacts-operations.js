@@ -9,7 +9,7 @@ export const getAllContacts = createAsyncThunk(
       const { data } = await api.fetchContacts();
       return data;
     } catch ({ response }) {
-      alertFunc("Somethink went wrong, try again")
+      alertFunc('Somethink went wrong, try again');
       return rejectWithValue(response);
     }
   }
@@ -30,7 +30,7 @@ export const addContact = createAsyncThunk(
       const { data: result } = await api.addContact(data);
       return result;
     } catch ({ response }) {
-      alertFunc("Something went wrong, please try again!")
+      alertFunc('Something went wrong, please try again!');
       return rejectWithValue(response);
     }
   },
@@ -52,7 +52,7 @@ export const deleteContact = createAsyncThunk(
       await api.deleteContact(data);
       return data;
     } catch ({ response }) {
-      alertFunc("Something went wrong, please try again!")
+      alertFunc('Something went wrong, please try again!');
       return rejectWithValue(response);
     }
   }
@@ -62,10 +62,11 @@ export const editContact = createAsyncThunk(
   'contacts/edit',
   async (data, { rejectWithValue }) => {
     try {
-      const result = await api.editContact(data);
+      await api.editContact(data);
+      const { data: result } = await api.fetchContacts();
       return result;
     } catch ({ response }) {
-      alertFunc("Something went wrong, please try again!")
+      alertFunc('Something went wrong, please try again!');
       return rejectWithValue(response);
     }
   }

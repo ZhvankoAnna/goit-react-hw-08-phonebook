@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getFilter } from 'redux/selectors';
 import { setFilter } from 'redux/filter/filter-slice';
 import { TextField } from '@mui/material';
+import styles from './filter.module.scss';
 
 const Filter = () => {
   const filter = useSelector(getFilter);
@@ -18,7 +19,7 @@ const Filter = () => {
       onChange={handleFilterChange}
       variant="standard"
       label="Filter"
-      sx={{width: 300, mb: 3}}
+      className={styles.field}
     />
   );
 };

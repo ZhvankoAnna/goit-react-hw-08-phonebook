@@ -3,7 +3,7 @@ import {
   getAllContacts,
   addContact,
   deleteContact,
-  editContact
+  editContact,
 } from './contacts-operations';
 
 const initialState = {
@@ -48,12 +48,7 @@ export const contactsSlice = createSlice({
       .addCase(editContact.pending, handlePending)
       .addCase(editContact.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.items.map(item => {
-          if(item.id === payload.id){
-            return payload;
-          }
-          return item;
-      });
+        state.items = payload;
       })
       .addCase(editContact.rejected, handleRejected);
   },

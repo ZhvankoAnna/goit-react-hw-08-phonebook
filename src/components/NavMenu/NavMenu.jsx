@@ -10,12 +10,10 @@ const NavMenu = () => {
 
   return (
     <header>
-      <Container maxWidth="lg" sx={{py: 3, backgroundColor: "#FFCA28"}}>
-      <nav className={styles.nav}>
-        {isLogin ?
-        <UserMenu /> :
-        <AuthMenu />}
-      </nav>
+      <Container maxWidth="lg" className={styles.container}>
+        <nav className={styles.navMenu}>
+          {isLogin ? <UserMenu /> : <AuthMenu />}
+        </nav>
       </Container>
     </header>
   );

@@ -1,4 +1,4 @@
-import { fetchIntstance } from "./authAPI";
+import { fetchIntstance } from './authAPI';
 
 export const fetchContacts = () => {
   return fetchIntstance.get('/contacts');
@@ -12,6 +12,6 @@ export const deleteContact = id => {
   return fetchIntstance.delete(`/contacts/${id}`);
 };
 
-export const editContact = ({id, props}) => {
+export const editContact = ({ id, ...props }) => {
   return fetchIntstance.patch(`/contacts/${id}`, props);
 };
